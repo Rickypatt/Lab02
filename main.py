@@ -1,25 +1,28 @@
+from dictionary import Dictionary
 import translator as tr
 
-t = tr.Translator()
+dizionario = Dictionary()
+t = tr.Translator(dizionario)
+gira = True
 
-
-while(True):
-
+while gira:
     t.printMenu()
+    t.loadDictionary("dictionary.txt")
+    txtIn = input("Cosa vuoi fare: ")
 
-    t.loadDictionary("filename.txt")
-
-    txtIn = input()
-
-    # Add input control here!
+# Add input control here!
 
     if int(txtIn) == 1:
-        print()
-        txtIn = input()
-        pass
-    if int(txtIn) == 2:
-        pass
-    if int(txtIn) == 3:
-        pass
-    if int(txtIn) == 4:
-        break
+        print(t.handleAdd("dictionary.txt"))
+
+    elif int(txtIn) == 2:
+        print(t.handleTranslate())
+
+    elif int(txtIn) == 3:
+        print(t.handleWildCard())
+
+    elif int(txtIn) == 4:
+        print(t.dizionario.stampaDizionario())
+
+    elif int(txtIn) == 5:
+        gira = False
